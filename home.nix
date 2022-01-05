@@ -72,6 +72,7 @@
         vim-nix
         nerdtree
         gruvbox
+        vim-fugitive
       ];
     };
 }
