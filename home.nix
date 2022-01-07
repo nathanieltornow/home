@@ -21,7 +21,8 @@
 
 
   home.packages = with pkgs; [
-
+      texlive.combined.scheme-basic
+      qemu
   ];
 
   # Let Home Manager install and manage itself.
