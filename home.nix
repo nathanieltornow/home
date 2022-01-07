@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
-
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = builtins.getEnv "USER";
@@ -23,6 +20,11 @@
   home.packages = with pkgs; [
     texlive.combined.scheme-basic
     qemu
+    cmake
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protobuf
+    nodejs-17_x
   ];
 
   # Let Home Manager install and manage itself.
@@ -34,12 +36,8 @@
     userName = "Nathaniel Tornow";
     userEmail = "nathaniel.tornow@tum.de";
     extraConfig = {
-      hub.protocol = "https";
       github.user = "nathanieltornow";
-      color.ui = true;
       pull.rebase = true;
-      core.commitGraph = true;
-      gc.writeCommitGraph = true;
     };
   };
 
@@ -85,6 +83,9 @@
       nerdtree
       gruvbox
       vim-fugitive
+      vim-go
+      coc-nvim
+      coc-go
     ];
   };
 }
