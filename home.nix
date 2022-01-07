@@ -21,8 +21,8 @@
 
 
   home.packages = with pkgs; [
-      texlive.combined.scheme-basic
-      qemu
+    texlive.combined.scheme-basic
+    qemu
   ];
 
   # Let Home Manager install and manage itself.
@@ -30,50 +30,61 @@
 
 
   programs.git = {
-      enable = true;
-      userName = "Nathaniel Tornow";
-      userEmail = "nathaniel.tornow@tum.de";
+    enable = true;
+    userName = "Nathaniel Tornow";
+    userEmail = "nathaniel.tornow@tum.de";
+    extraConfig = {
+      hub.protocol = "https";
+      github.user = "nathanieltornow";
+      color.ui = true;
+      pull.rebase = true;
+      core.commitGraph = true;
+      gc.writeCommitGraph = true;
+    };
   };
 
   programs.go = {
-      enable = true;
-      goPath = "go";
-      goBin = ".local/bin.go";
+    enable = true;
+    goPath = "go";
+    goBin = ".local/bin.go";
   };
+
 
   programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableAutosuggestions = true;
-      sessionVariables = rec {
-         DEV_ALLOW_ITERM2_INTEGRATION = "1";
-         EDITOR = "vim";
-      };
+    enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
+    shellAliases = import ./aliases.nix;
+    sessionVariables = rec {
+      DEV_ALLOW_ITERM2_INTEGRATION = "1";
+      EDITOR = "vim";
+      GIT_EDITOR = EDITOR;
+    };
   };
-  
+
 
   programs.starship = {
-      enable = true;
-      settings = {
-    add_newline = true;
+    enable = true;
+    settings = {
+      add_newline = true;
+    };
   };
-};
 
 
   programs.tmux = {
-      enable = true;
+    enable = true;
   };
 
   programs.neovim = {
-      enable = true;
-      vimAlias = true;
-      extraConfig = builtins.readFile ./config.vim;
+    enable = true;
+    vimAlias = true;
+    extraConfig = builtins.readFile ./config.vim;
 
-      plugins = with pkgs.vimPlugins; [
-        vim-nix
-        nerdtree
-        gruvbox
-        vim-fugitive
-      ];
-    };
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+      nerdtree
+      gruvbox
+      vim-fugitive
+    ];
+  };
 }
