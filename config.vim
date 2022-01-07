@@ -8,7 +8,9 @@ set number relativenumber
 set splitright
 set autowrite
 
-# Don't use arrow-keys
+let g:go_highlight_types = 1
+
+" Don't use arrow-keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
