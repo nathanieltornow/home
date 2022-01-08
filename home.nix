@@ -86,6 +86,8 @@
       vim-go
       coc-nvim
       coc-go
+      coc-cmake
+      coc-clangd
     ];
   };
 }
