@@ -24,7 +24,7 @@
     protoc-gen-go
     protoc-gen-go-grpc
     protobuf
-    nodejs-17_x
+    nodejs-16_x
   ];
 
   # Let Home Manager install and manage itself.
