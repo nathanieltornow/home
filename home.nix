@@ -30,7 +30,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-
   programs.git = {
     enable = true;
     userName = "Nathaniel Tornow";
@@ -57,6 +56,7 @@
       DEV_ALLOW_ITERM2_INTEGRATION = "1";
       EDITOR = "vim";
       GIT_EDITOR = EDITOR;
+      CLICOLOR = "YES";
     };
   };
 
@@ -80,14 +80,17 @@
 
     plugins = with pkgs.vimPlugins; [
       vim-nix
-      nerdtree
       gruvbox
+      nerdtree
       vim-fugitive
       vim-go
       coc-nvim
       coc-go
       coc-cmake
       coc-clangd
+      vim-commentary
+      telescope-nvim
     ];
   };
+
 }
