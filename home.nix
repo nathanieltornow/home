@@ -20,11 +20,17 @@
   home.packages = with pkgs; [
     texlive.combined.scheme-basic
     qemu
+
     cmake
+
     protoc-gen-go
     protoc-gen-go-grpc
     protobuf
+
     nodejs-16_x
+
+    python39
+    python39Packages.pylint
   ];
 
   # Let Home Manager install and manage itself.
@@ -63,6 +69,7 @@
 
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       add_newline = true;
     };
@@ -88,6 +95,7 @@
       coc-go
       coc-cmake
       coc-clangd
+      coc-pyright
       vim-commentary
       telescope-nvim
     ];
