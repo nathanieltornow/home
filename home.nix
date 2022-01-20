@@ -7,6 +7,7 @@
     qemu
 
     clang
+    clang-tools
     cmake
 
     protoc-gen-go
