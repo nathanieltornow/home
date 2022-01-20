@@ -6,6 +6,7 @@
     texlive.combined.scheme-basic
     qemu
 
+    clang
     cmake
 
     protoc-gen-go
@@ -88,6 +89,7 @@
       coc-pyright
       vim-commentary
       telescope-nvim
+      nvim-treesitter
     ];
   };
 

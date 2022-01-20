@@ -1,12 +1,13 @@
 colorscheme gruvbox
 set nowrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set number relativenumber
 set splitright
 set autowrite
+set ignorecase
 
 let g:go_highlight_types = 1
 let g:go_def_mapping_enabled = 0
