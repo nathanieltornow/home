@@ -33,6 +33,8 @@
     };
   };
 
+  programs.fzf.enable = true;
+
   programs.go = {
     enable = true;
     goPath = "go";
@@ -90,6 +92,7 @@
       coc-pyright
       vim-commentary
       telescope-nvim
+      vim-surround
       nvim-treesitter
     ];
   };
