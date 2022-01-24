@@ -9,6 +9,12 @@ set splitright
 set autowrite
 set ignorecase
 
+inoremap { {}
+inoremap [ []
+inoremap ( ()
+
+nmap <space>f <Cmd>CocCommand explorer<CR>
+
 let g:go_highlight_types = 1
 let g:go_def_mapping_enabled = 0
 

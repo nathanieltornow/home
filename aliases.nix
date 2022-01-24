@@ -1,5 +1,5 @@
 {
   c = "clear";
-  vimt = "vim -c \"NERDTree\" $1";
+  vimt = "vim -c \"CocCommand explorer\" $1";
   vimf = "nvim $(fzf)";
 }

@@ -56,6 +56,7 @@
       EDITOR = "vim";
       GIT_EDITOR = EDITOR;
       CLICOLOR = "YES";
+      TERM = "xterm-256color";
     };
   };
 
@@ -82,14 +83,14 @@
     plugins = with pkgs.vimPlugins; [
       vim-nix
       gruvbox
-      nerdtree
       vim-fugitive
-      vim-go
+      # vim-go
       coc-nvim
       coc-go
       coc-cmake
       coc-clangd
       coc-pyright
+      coc-explorer
       vim-commentary
       telescope-nvim
       vim-surround
