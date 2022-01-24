@@ -9,9 +9,9 @@ set splitright
 set autowrite
 set ignorecase
 
-inoremap { {}
-inoremap [ []
-inoremap ( ()
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
 
 nmap <space>f <Cmd>CocCommand explorer<CR>
 
