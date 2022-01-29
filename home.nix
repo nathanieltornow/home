@@ -18,6 +18,8 @@
 
     python39
     python39Packages.pylint
+
+    lazygit
   ];
 
   # Let Home Manager install and manage itself.
@@ -83,7 +85,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-nix
       gruvbox
-      vim-fugitive
+      # vim-fugitive
       # vim-go
       coc-nvim
       coc-go
@@ -95,6 +97,7 @@
       telescope-nvim
       vim-surround
       nvim-treesitter
+      lazygit-nvim
     ];
   };
 
