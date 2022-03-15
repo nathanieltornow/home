@@ -8,6 +8,7 @@ set number relativenumber
 set splitright
 set autowrite
 set ignorecase
+set cursorline
 
 inoremap { {}<Esc>i
 inoremap [ []<Esc>i

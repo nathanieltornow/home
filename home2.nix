@@ -3,10 +3,7 @@
 {
 
   home.packages = with pkgs; [
-
-    ripgrep
-
-    texlive.combined.scheme-full
+    texlive.combined.scheme-basic
     qemu
 
     clang
@@ -23,12 +20,6 @@
     python39Packages.pylint
 
     lazygit
-
-    antlr
-
-    nomad
-    consul
-    vagrant
   ];
 
   # Let Home Manager install and manage itself.
@@ -52,17 +43,9 @@
     goBin = ".local/bin.go";
   };
 
+
   programs.bash = {
     enable = true;
-    shellAliases = import ./aliases.nix;
-    sessionVariables = rec {
-      # DEV_ALLOW_ITERM2_INTEGRATION = "1";
-      EDITOR = "vim";
-      GIT_EDITOR = EDITOR;
-      CLICOLOR = "YES";
-      TERM = "xterm-256color";
-    };
-    initExtra = "bindkey -v";
   };
 
   programs.zsh = {
@@ -71,13 +54,12 @@
     enableAutosuggestions = true;
     shellAliases = import ./aliases.nix;
     sessionVariables = rec {
-      # DEV_ALLOW_ITERM2_INTEGRATION = "1";
+      DEV_ALLOW_ITERM2_INTEGRATION = "1";
       EDITOR = "vim";
       GIT_EDITOR = EDITOR;
       CLICOLOR = "YES";
       TERM = "xterm-256color";
     };
-    initExtra = "bindkey -v";
   };
 
 
@@ -93,11 +75,6 @@
 
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-      # Start windows and panes at 1, not 0
-      set -g base-index 1
-      setw -g pane-base-index 1
-    '';
   };
 
   programs.neovim = {
@@ -109,7 +86,6 @@
       enable = true;
       settings = {
         "rust-analyzer.serverPath" = "rust-analyzer";
-        "python.analysis.useLibraryCodeForTypes" = false;
       };
     };
 
@@ -118,7 +94,6 @@
       gruvbox
       # vim-fugitive
       # vim-go
-      coc-lists
       coc-nvim
       coc-go
       coc-cmake
@@ -126,12 +101,6 @@
       coc-pyright
       coc-explorer
       coc-rust-analyzer
-      vim-airline
-
-      vimtex
-      coc-vimtex
-
-      vim-hcl
       vim-commentary
       telescope-nvim
       vim-surround

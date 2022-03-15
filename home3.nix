@@ -1,12 +1,30 @@
 { config, pkgs, ... }:
+let
+  coq_nvim = pkgs.vimUtils.buildVimPlugin rec {
+    name = "coq_nvim";
 
-{
+    src = pkgs.fetchFromGitHub {
+      owner = "ms-jpq";
+      repo = name;
+      rev = "9a2de81f7927690ca09cc0e57d779dda96acdbb9";
+      sha256 = "bjJRALK9uK2FXYPexrwQ0pRXXz/ftnM0v9AGy9UefPM=";
+    };
+  };
+  coq-artifacts = pkgs.vimUtils.buildVimPlugin rec {
+    name = "coq.artifacts";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "ms-jpq";
+      repo = name;
+      rev = "43029af68798ea4c2f62e2dd87083f8dd7428702";
+      sha256 = "KmudRy61F1IT4UF8jZxFGwP2AghFRiKVHFdr+uDLQsc=";
+    };
+  };
+  
+in {
 
   home.packages = with pkgs; [
-
-    ripgrep
-
-    texlive.combined.scheme-full
+    texlive.combined.scheme-basic
     qemu
 
     clang
@@ -23,12 +41,7 @@
     python39Packages.pylint
 
     lazygit
-
-    antlr
-
-    nomad
-    consul
-    vagrant
+    liberation_ttf
   ];
 
   # Let Home Manager install and manage itself.
@@ -52,17 +65,9 @@
     goBin = ".local/bin.go";
   };
 
+
   programs.bash = {
     enable = true;
-    shellAliases = import ./aliases.nix;
-    sessionVariables = rec {
-      # DEV_ALLOW_ITERM2_INTEGRATION = "1";
-      EDITOR = "vim";
-      GIT_EDITOR = EDITOR;
-      CLICOLOR = "YES";
-      TERM = "xterm-256color";
-    };
-    initExtra = "bindkey -v";
   };
 
   programs.zsh = {
@@ -71,13 +76,12 @@
     enableAutosuggestions = true;
     shellAliases = import ./aliases.nix;
     sessionVariables = rec {
-      # DEV_ALLOW_ITERM2_INTEGRATION = "1";
+      DEV_ALLOW_ITERM2_INTEGRATION = "1";
       EDITOR = "vim";
       GIT_EDITOR = EDITOR;
       CLICOLOR = "YES";
       TERM = "xterm-256color";
     };
-    initExtra = "bindkey -v";
   };
 
 
@@ -93,50 +97,21 @@
 
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-      # Start windows and panes at 1, not 0
-      set -g base-index 1
-      setw -g pane-base-index 1
-    '';
   };
 
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extraConfig = builtins.readFile ./config.vim;
-
-    coc = {
-      enable = true;
-      settings = {
-        "rust-analyzer.serverPath" = "rust-analyzer";
-        "python.analysis.useLibraryCodeForTypes" = false;
-      };
-    };
+    extraConfig = builtins.readFile ./config2.vim;
+    withNodeJs = true;
+    withPython3 = true;
 
     plugins = with pkgs.vimPlugins; [
-      vim-nix
       gruvbox
-      # vim-fugitive
-      # vim-go
-      coc-lists
-      coc-nvim
-      coc-go
-      coc-cmake
-      coc-clangd
-      coc-pyright
-      coc-explorer
-      coc-rust-analyzer
-      vim-airline
-
-      vimtex
-      coc-vimtex
-
-      vim-hcl
-      vim-commentary
-      telescope-nvim
-      vim-surround
-      nvim-treesitter
-      lazygit-nvim
+      nvim-lspconfig
+      coq_nvim
+      coq-artifacts
+      chadtree
     ];
   };
 
